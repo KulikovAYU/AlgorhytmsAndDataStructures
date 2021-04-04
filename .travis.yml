@@ -46,8 +46,3 @@ script:
 - cmake ..
 -cmake --build .
 
-
-
-      
-      
-        - gcc
