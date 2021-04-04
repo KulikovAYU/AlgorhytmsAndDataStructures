@@ -1,11 +1,53 @@
 language: cpp
-install: make get-deps
+
+sudo:     required  # используем Virtual Machine (а не Docker container)
+  
 compiler:
     - clang
     - gcc
-    
+  
+before_script:
+  choco upgrade cmake
+  
+env:
+    # список переменных окружения, влияющих на матрицу сборки:
+    - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+    - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+    - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+    - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+
+matrix:
+    exclude:
+        # вручную исключим ненужные элементы из матрицы сборки:
+        - os:       osx
+          compiler: gcc
+
+        - os:  osx
+          env: TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+
+        - os:  osx
+          env: TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+          
 addons:
    apt:
+   sources:
+      - ubuntu-toolchain-r-test
     packages:
       - cmake-data
-      - cmake
+      - cmake 3.20.0
+ 
+ install:
+    # скрипт настройки среды и установки зависимостей:
+    - source ci/travis/install-$TRAVIS_OS_NAME.sh
+    
+script: 
+- mkdir build
+- cd build
+- cmake ..
+-cmake --build .
+
+
+
+      
+      
+        - gcc
