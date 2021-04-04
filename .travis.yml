@@ -4,7 +4,7 @@ sudo:     required  # используем Virtual Machine (а не Docker conta
   
 compiler:
     - clang
-    - gcc
+  
   
 before_script:
   choco upgrade cmake
