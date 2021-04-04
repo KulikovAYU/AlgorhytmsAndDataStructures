@@ -15,10 +15,6 @@ addons:
       - cmake-data
       - cmake
  
- install:
-    # скрипт настройки среды и установки зависимостей:
-    - source ci/travis/install-$TRAVIS_OS_NAME.sh
-    
 script: 
 - cmake .
 -cmake --build .
