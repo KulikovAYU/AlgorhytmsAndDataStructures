@@ -1,6 +1,7 @@
 language: cpp
 
-
+before_script:
+  choco upgrade cmake
 
 compiler:
     - clang
