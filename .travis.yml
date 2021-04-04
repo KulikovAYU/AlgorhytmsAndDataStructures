@@ -27,6 +27,8 @@ matrix:
           
 addons:
    apt:
+   sources:
+      - ubuntu-toolchain-r-test
     packages:
       - cmake-data
       - cmake 3.20.0
