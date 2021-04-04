@@ -7,8 +7,8 @@ compiler:
     - gcc
    
 
-    addons:
-     snaps:
+addons:
+ snaps:
        - name: cmake
          confinement: classic
          #channel: latest/candidate
