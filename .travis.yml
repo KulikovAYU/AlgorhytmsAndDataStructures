@@ -10,4 +10,4 @@ addons:
       - cmake-data
       - cmake
       
-script: BuildCMake.bat
+script: ./BuildCMake.bat
