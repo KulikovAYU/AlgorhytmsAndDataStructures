@@ -5,7 +5,10 @@ sudo:     required  # используем Virtual Machine (а не Docker conta
 compiler:
     - clang
     - gcc
-    
+  
+before_script:
+  choco upgrade cmake
+  
 env:
     # список переменных окружения, влияющих на матрицу сборки:
     - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
