@@ -1,7 +1,6 @@
 language: cpp
 
-before_script:
-  choco upgrade cmake 3.20.0
+
 
 compiler:
     - clang
