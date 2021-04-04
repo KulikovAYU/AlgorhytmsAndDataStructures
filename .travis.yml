@@ -1,0 +1,11 @@
+language: cpp
+install: make get-deps
+compiler:
+    - clang
+    - gcc
+    
+addons:
+   apt:
+    packages:
+      - cmake-data
+      - cmake
