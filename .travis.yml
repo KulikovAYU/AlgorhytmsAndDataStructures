@@ -15,7 +15,7 @@ include:
             - g++-7
       env:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-        
+matrix:       
 include:
  - os: osx
    osx_image: xcode8
