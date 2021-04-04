@@ -41,8 +41,6 @@ addons:
     - source ci/travis/install-$TRAVIS_OS_NAME.sh
     
 script: 
-- mkdir build
-- cd build
-- cmake ..
+- cmake .
 -cmake --build .
 
