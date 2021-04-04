@@ -1,5 +1,8 @@
 language: cpp
 
+before_install:
+  - chmod +x build.sh
+  
 compiler:
     - clang
     - gcc
@@ -10,4 +13,7 @@ addons:
       - cmake-data
       - cmake
       
-script: ./BuildCMake.bat
+script: 
+- cmake .
+- cmake --build . -- -j2
+
