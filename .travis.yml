@@ -1,6 +1,6 @@
 language: cpp
 
-
+sudo:     required  # используем Virtual Machine (а не Docker container)
   
 compiler:
     - clang
