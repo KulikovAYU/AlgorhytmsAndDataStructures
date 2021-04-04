@@ -8,6 +8,9 @@ compiler:
    
 
 addons:
+apt:
+    sources:
+      - ubuntu-toolchain-r-test
  snaps:
        - name: cmake
          confinement: classic
@@ -16,5 +19,6 @@ addons:
          #channel: 3.17/beta
       
 script: 
-- cmake .
-- cmake --build . -- -j2
+- cmake --version
+- cmake CMakeLists.txt
+- cmake  --build . --target neat
