@@ -13,6 +13,8 @@ addons:
       - cmake
       
 script: 
-- cmake .
-- cmake --build . -- -j2
+- mkdir build
+- cd build
+- cmake ..
+cmake --build .
 
