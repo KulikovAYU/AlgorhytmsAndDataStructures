@@ -11,8 +11,8 @@ addons:
  snaps:
        - name: cmake
          confinement: classic
-         #channel: latest/candidate
-         channel: 3.18/candidate
+         channel: latest/candidate
+         #channel: 3.18/candidate
          #channel: 3.17/beta
       
 script: 
