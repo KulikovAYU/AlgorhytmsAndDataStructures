@@ -6,10 +6,11 @@ compiler:
     - clang
     - gcc
    
-
-
-
-      - cmake
+addons:
+    snaps:
+      - name:cmake
+      confinement: classic
+      channel: latest/candidate
       
 script: 
 - cmake .
