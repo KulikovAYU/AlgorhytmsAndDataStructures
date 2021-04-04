@@ -9,8 +9,7 @@ compiler:
 
 addons:
 apt:
-    sources:
-      - ubuntu-toolchain-r-test
+
  snaps:
        - name: cmake
          confinement: classic
