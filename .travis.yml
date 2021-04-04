@@ -1,7 +1,6 @@
 language: cpp
 
-before_install:
-  - chmod +x build.sh
+
   
 compiler:
     - clang
