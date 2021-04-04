@@ -9,8 +9,6 @@ before_script:
   
 addons:
    apt:
-   sources:
-      - ubuntu-toolchain-r-test
     packages:
       - cmake-data
       - cmake
