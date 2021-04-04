@@ -32,6 +32,6 @@ add_executable(${SOLUTION_NAME}
 			   ${HEADER_FILES_ALGO_IMPL})
 			   
 target_include_directories(${SOLUTION_NAME} PRIVATE ${LIBRARY_STRUCTURE_DIR})
-target_link_directories (${SOLUTION_NAME} PUBLIC ${LIBRARY_STRUCTURE_DIR})
+link_directories (${SOLUTION_NAME} PUBLIC ${LIBRARY_STRUCTURE_DIR})
 target_link_libraries (${SOLUTION_NAME} ${LIBRARY_STRUCTURE_DIR})
 			
