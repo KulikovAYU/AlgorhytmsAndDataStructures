@@ -1,3 +1,4 @@
 # AlgorhytmsAndDataStructures
 To studying Algorhytms And DataStructures
-https://travis-ci.com/KulikovAYU/AlgorhytmsAndDataStructures.svg?branch=master
+
+[![Build Status](https://travis-ci.com/KulikovAYU/AlgorhytmsAndDataStructures.svg?branch=master)](https://travis-ci.com/KulikovAYU/AlgorhytmsAndDataStructures)
