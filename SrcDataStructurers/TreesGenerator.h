@@ -11,5 +11,6 @@ public:
 
 	static PtrBinaryNode<std::string> CreateStrBinaryTree();
 
+	static PtrNode<int> CreateUndirectedTree1();
 };
 

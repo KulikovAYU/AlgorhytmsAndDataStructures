@@ -26,7 +26,7 @@ class BinaryNode
 public:
 	BinaryNode()
 	{
-
+		++m_nId;
 	}
 	explicit BinaryNode(T value) : m_value(value)
 	{
@@ -62,8 +62,10 @@ private:
 	PtrBinaryNode<T> m_pLeft;
 	PtrBinaryNode<T> m_pRight;
 	T m_value;
+	static int m_nId;
 };
-
+template<typename T>
+int BinaryNode<T>::m_nId = 0;
 
 template<typename T>
 class Node
@@ -72,7 +74,7 @@ class Node
 public:
 	Node()
 	{
-
+		++m_nId;
 	}
 	explicit Node(T value) : m_value(value)
 	{
@@ -106,10 +108,21 @@ public:
 		return m_parentNode;
 	}
 
+	int getId() const { return m_nId; }
+
+	bool operator ==(const PtrNode<T>& other) const 
+	{
+		return m_nId == other.m_nId;
+	}
+
 private:
 	std::vector<PtrNode<T>> m_pChilds;
 	T m_value;
 	PtrNode<T> m_parentNode;
+	static int m_nId;
 };
 
+
+template<typename T>
+int Node<T>::m_nId = 0;
 

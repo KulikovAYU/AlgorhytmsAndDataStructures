@@ -8,9 +8,11 @@
 
 int main()
 {
-    const auto& undirTree = TreeGenerator::CreateUndirectedTree();
+   /* const auto& undirTree = TreeGenerator::CreateUndirectedTree();
     const auto& reqNode = TreesAlgo_4::findReqNode(0,undirTree);
-    const auto& res = TreesAlgo_4::BuildNewTreeByVertex(reqNode);
+    const auto& res = TreesAlgo_4::BuildNewTreeByVertex(reqNode);*/
+    const auto& undirTree = TreeGenerator::CreateUndirectedTree1();
+    const auto& res = TreesAlgo_5::GetCenterOfTheTree(undirTree);
     //int n = TreesAlgo_3::GetHeight(TreeGenerator::CreateStrBinaryTree());
     std::cout << "Hello World!\n";
 }

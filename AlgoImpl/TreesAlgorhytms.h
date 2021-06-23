@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <queue>
 #include <stack>
+#include <vector>
+#include <map>
 /// <summary>
 /// Левосторонний обход дерева
 /// http://khpi-iip.mipk.kharkiv.edu/library/datastr/book_sod/kgsu/din_0049.html
@@ -131,5 +133,131 @@ public:
 		return nullptr;
 	}
 };
+
+
+//найти центр дерева
+//https://www.youtube.com/watch?v=nzF_9bjDzdc&list=PLDV1Zeh2NRsDfGc8rbQ0_58oEZQVtvoIc&index=4
+class TreesAlgo_5 
+{
+public:
+	template<typename T>
+	static std::vector<PtrNode<T>> GetCenterOfTheTree(const PtrNode<T>& srcNode)
+	{
+		std::vector<PtrNode<T>> resNodes;
+		std::map<PtrNode<T>, int> markers;
+		std::vector<PtrNode<T>> markedNode;
+		int nCounter = 3;
+		do 
+		{
+			markedNode.clear();
+			MarkTree(srcNode, markers, markedNode);
+			markedNode.clear();
+			ReduceNodeWeight(srcNode, markers, markedNode);
+			resNodes.clear();
+			markedNode.clear();
+			GetCountOfNode(srcNode, markers, markedNode, resNodes);
+		} while (resNodes.size() > 2);
+	
+
+		return resNodes;
+	}
+
+private:
+
+
+	template<typename T>
+	static void MarkTree(const PtrNode<T>& srcNode, std::map<PtrNode<T>,int>& markers, std::vector<PtrNode<T>>& markedNode)
+	{
+		if (!srcNode)
+			return;
+
+		if (std::find(markedNode.cbegin(), markedNode.cend(), srcNode) != markedNode.cend())
+			return;
+		markedNode.push_back(srcNode);
+
+		auto it = std::find_if(markers.cbegin(), markers.cend(), [&srcNode](const std::pair<PtrNode<T>, int>& val) {return (val.first)->getId() == srcNode->getId(); });
+		if (it != markers.cend() && (it->second) == 0)
+			return;
+
+		int nChildNodes = srcNode->getChildsCnt();
+		bool bIsLeafNode = (nChildNodes == 0);
+		if (bIsLeafNode)
+		{
+			markers[srcNode] = 1;
+		}
+		else
+		{
+			markers[srcNode] = nChildNodes;
+		}
+
+		for (int i = 0; i < nChildNodes; ++i)
+		{
+			const PtrNode<T>& childNode = srcNode->getNode(i);
+			MarkTree(childNode , markers, markedNode);
+		}
+	}
+
+
+	template<typename T>
+	static void ReduceNodeWeight(const PtrNode<T>& srcNode, std::map<PtrNode<T>, int>& markers, std::vector<PtrNode<T>>& markedNode)
+	{
+		if (!srcNode)
+			return;
+
+		if (std::find(markedNode.cbegin(), markedNode.cend(), srcNode) != markedNode.cend())
+			return;
+
+		//auto it = std::find_if(markers.cbegin(), markers.cend(), [&srcNode](const std::pair<PtrNode<T>, int>& val) {return (val.first)->getId() == srcNode->getId(); });
+
+		markedNode.push_back(srcNode);
+
+		int nodeWeight = markers[srcNode];
+		if (nodeWeight == 0)
+			return;
+		else if (nodeWeight == 1)
+		{
+			markers[srcNode] -= 1;
+		}
+		
+		
+
+		int nChildNodes = srcNode->getChildsCnt();
+		for (int i = 0; i < nChildNodes; ++i)
+		{
+			const PtrNode<T>& childNode = srcNode->getNode(i);
+			ReduceNodeWeight(childNode ,markers, markedNode);
+		}
+	}
+
+
+	template<typename T>
+	static void GetCountOfNode(const PtrNode<T>& srcNode, std::map<PtrNode<T>, int>& markers, std::vector<PtrNode<T>>& markedNode, std::vector<PtrNode<T>>& resNodes)
+	{
+
+		if (!srcNode)
+			return;
+
+		if (std::find(markedNode.cbegin(), markedNode.cend(), srcNode) != markedNode.cend())
+			return;
+		markedNode.push_back(srcNode);
+
+		auto it = std::find_if(markers.cbegin(), markers.cend(), [&srcNode](const std::pair<PtrNode<T>, int>& val) {return (val.first)->getId() == srcNode->getId(); });
+		
+		if (it != markers.cend() && (it->second) == 0)
+			return;
+		
+		resNodes.push_back(srcNode);
+		for (int i = 0; i < srcNode->getChildsCnt(); ++i)
+		{
+			const PtrNode<T>& childNode = srcNode->getNode(i);
+			GetCountOfNode(childNode , markers, markedNode, resNodes);
+		}
+
+
+	}
+
+
+};
+
 
 

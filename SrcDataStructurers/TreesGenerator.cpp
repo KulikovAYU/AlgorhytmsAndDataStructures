@@ -90,3 +90,43 @@ PtrBinaryNode<std::string> TreeGenerator::CreateStrBinaryTree()
 
 	return RootNode;
 }
+
+PtrNode<int> TreeGenerator::CreateUndirectedTree1()
+{
+	PtrNode<int> ptrNode0 = (std::make_shared<Node<int>>(0));
+	PtrNode<int> ptrNode1 = (std::make_shared<Node<int>>(1));
+	PtrNode<int> ptrNode2 = (std::make_shared<Node<int>>(2));
+	PtrNode<int> ptrNode3 = (std::make_shared<Node<int>>(3));
+	PtrNode<int> ptrNode4 = (std::make_shared<Node<int>>(4));
+	PtrNode<int> ptrNode5 = (std::make_shared<Node<int>>(5));
+	PtrNode<int> ptrNode6 = (std::make_shared<Node<int>>(6));
+	PtrNode<int> ptrNode7 = (std::make_shared<Node<int>>(7));
+	PtrNode<int> ptrNode8 = (std::make_shared<Node<int>>(8));
+	PtrNode<int> ptrNode9 = (std::make_shared<Node<int>>(9));
+
+	ptrNode0->m_pChilds.emplace_back(ptrNode1);
+
+	ptrNode1->m_pChilds.emplace_back(ptrNode0);
+	ptrNode1->m_pChilds.emplace_back(ptrNode2);
+
+	ptrNode2->m_pChilds.emplace_back(ptrNode1);
+	ptrNode2->m_pChilds.emplace_back(ptrNode9);
+	ptrNode2->m_pChilds.emplace_back(ptrNode6);
+	ptrNode2->m_pChilds.emplace_back(ptrNode3);
+
+	ptrNode3->m_pChilds.emplace_back(ptrNode2);
+	ptrNode3->m_pChilds.emplace_back(ptrNode4);
+	ptrNode3->m_pChilds.emplace_back(ptrNode5);
+
+	ptrNode4->m_pChilds.emplace_back(ptrNode3);
+	ptrNode5->m_pChilds.emplace_back(ptrNode3);
+
+	ptrNode6->m_pChilds.emplace_back(ptrNode2);
+	ptrNode6->m_pChilds.emplace_back(ptrNode7);
+	ptrNode6->m_pChilds.emplace_back(ptrNode8);
+
+	ptrNode7->m_pChilds.emplace_back(ptrNode6);
+	ptrNode8->m_pChilds.emplace_back(ptrNode6);
+
+	return ptrNode1;
+}
